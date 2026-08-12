@@ -1,0 +1,31 @@
+# --- Core ---
+torch>=2.1.0
+transformers>=4.40.0
+datasets>=2.19.0
+
+# --- Detection (Phase 3) ---
+ultralytics>=8.2.0          # YOLOv8
+
+# --- OCR (Phase 4) ---
+opencv-python>=4.9.0
+easyocr>=1.7.1
+pytesseract>=0.3.10
+
+# --- VQA fine-tuning (Phase 5) ---
+peft>=0.11.0                # LoRA/QLoRA
+bitsandbytes>=0.43.0        # 8-bit/4-bit loading for memory-efficient fine-tuning
+accelerate>=0.30.0
+wandb>=0.17.0                # experiment tracking
+
+# --- Voice interface (Phase 6) ---
+openai-whisper>=20231117
+pyttsx3>=2.90
+
+# --- Demo app (Phase 8) ---
+streamlit>=1.35.0
+gradio>=4.31.0
+
+# --- Utilities ---
+pillow>=10.3.0
+numpy>=1.26.0
+pandas>=2.2.0

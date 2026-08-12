@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Data & models — these are large and don't belong in Git history.
+# We'll track *what* dataset/model version we used in README/DVC-style notes instead of committing the files themselves.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+
+# Secrets — API keys for W&B, HF Hub, etc. go in .env, never committed.
+.env
+
+# OS/editor junk
+.DS_Store
+.ipynb_checkpoints/
