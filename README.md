@@ -42,8 +42,8 @@ Photo + spoken question
 Build is organized into 8 phases, tracked as we go:
 
 1. Project setup (this step)
-2. Data acquisition & inspection — VizWiz-VQA, Freiburg Groceries, ExpDate, Grozi-120
-3. Product detection — YOLOv8 fine-tuned on grocery data (Colab)
+2. Data acquisition & inspection — VizWiz-VQA, SKU-110K, Freiburg Groceries, ExpDate, Grozi-120
+3. Product detection — YOLOv8 fine-tuned on SKU-110K (Colab)
 4. Label/expiration-date reading — OpenCV + OCR, validated on ExpDate
 5. VQA — BLIP fine-tuned on VizWiz-VQA with LoRA (Colab), tracked in W&B
 6. Voice interface — Whisper (STT) + TTS
@@ -64,7 +64,8 @@ Build is organized into 8 phases, tracked as we go:
 ## Data sources
 
 - [VizWiz-VQA](https://vizwiz.org/tasks-and-datasets/vqa/) — real photos and questions from blind users, core VQA fine-tuning set
-- [Freiburg Groceries Dataset](https://github.com/PhilJd/freiburg_groceries_dataset) — product classification
+- [SKU-110K](https://github.com/eg4000/SKU110K_CVPR19) — 11,743 real supermarket shelf images with 1.7M bounding-box annotations (single class: "product") — primary detection training set for YOLOv8. Freiburg Groceries is classification-only (image-level labels, no bounding boxes), so it can't train a detector; SKU-110K supplies the box annotations YOLO needs.
+- [Freiburg Groceries Dataset](https://github.com/PhilJd/freiburg_groceries_dataset) — optional supplementary classification signal (e.g. class label refinement after detection), not the detection training set
 - [ExpDate](https://felizang.github.io/expdate/) — expiration date recognition
 - Grozi-120 / Grocery Products Dataset — product recognition
 

@@ -36,7 +36,7 @@ integration (Phase 7) and demo app wiring (Phase 8) — don't assume cross-stage
 coupling exists yet unless the relevant phase is complete.
 
 Directory-to-phase mapping:
-- `src/detection/` — YOLOv8 product detection, fine-tuned on grocery data (Colab)
+- `src/detection/` — YOLOv8 product detection, fine-tuned on SKU-110K (Colab)
 - `src/ocr/` — OpenCV preprocessing (deskew/denoise) + EasyOCR/Tesseract for
   label and expiration-date reading, validated on ExpDate dataset
 - `src/vqa/` — BLIP fine-tuned on VizWiz-VQA via LoRA (Hugging Face PEFT), Colab
@@ -52,7 +52,12 @@ Directory-to-phase mapping:
 ## Data sources
 
 - VizWiz-VQA — real blind-user photos/questions, core VQA fine-tuning set
-- Freiburg Groceries — 5,000 images, 25 grocery classes, for product classification
+- SKU-110K — 11,743 real supermarket shelf images, 1.7M bounding-box
+  annotations, single-class "product" detection — primary YOLOv8 detection
+  training set. Freiburg is classification-only (no bounding boxes), so it
+  can't train a detector; SKU-110K supplies the boxes YOLO needs.
+- Freiburg Groceries — 5,000 images, 25 grocery classes; optional supplementary
+  classification signal only, not the detection training set
 - ExpDate — expiration date recognition (start with Products-Real subset)
 - Grozi-120 / Grocery Products — product recognition (download link needs
   reconfirming before Phase 3, per notebook TODO — original hosting has moved)
